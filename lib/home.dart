@@ -24,10 +24,14 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BoxDecoration boxDecoration = BoxDecoration(
+      color: Colors.white,
+    );
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: Center(child: Text('My Page!')),
       drawer: Drawer(
+        elevation: 20.0,
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
         // space to fit everything.
@@ -35,13 +39,15 @@ class MyHomePage extends StatelessWidget {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
-              child: Text('Drawer Header'),
-              decoration: BoxDecoration(
-                color: Colors.white,
-              ),
+            // ignore: missing_required_param
+            UserAccountsDrawerHeader(
+              accountName: Text('Joey'),
+              currentAccountPicture:
+                  Image.network('https://i.imgur.com/t0MRiAf.png'),
+              decoration: boxDecoration,
             ),
             ListTile(
+              leading: Icon(Icons.favorite),
               title: Text('Activity Feed'),
               onTap: () {
                 // Update the state of the app
@@ -51,6 +57,7 @@ class MyHomePage extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: Icon(Icons.bookmark),
               title: Text('Saved'),
               onTap: () {
                 // Update the state of the app
@@ -60,6 +67,7 @@ class MyHomePage extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: Icon(Icons.chat_bubble),
               title: Text('Forums'),
               onTap: () {
                 // Update the state of the app
@@ -69,6 +77,7 @@ class MyHomePage extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: Icon(Icons.account_box_rounded),
               title: Text('Profile'),
               onTap: () {
                 // Update the state of the app
@@ -78,6 +87,7 @@ class MyHomePage extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: Icon(Icons.brightness_low),
               title: Text('Settings'),
               onTap: () {
                 // Update the state of the app
@@ -87,7 +97,7 @@ class MyHomePage extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.access_alarm),
+              leading: Icon(Icons.arrow_right_rounded),
               title: Text('Log out'),
               onTap: () {
                 // Update the state of the app
