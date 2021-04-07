@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   final appTitle = 'Home';
   static const PrimaryColor = const Color(0xFFFFFFFF);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,7 +12,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: PrimaryColor,
       ),
-      home: MyHomePage(title: appTitle),
     );
   }
 }
