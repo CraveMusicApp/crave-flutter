@@ -1,40 +1,27 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  final appTitle = 'Home';
-  static const PrimaryColor = const Color(0xFFFFFFFF);
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: appTitle,
-      theme: ThemeData(
-        primaryColor: PrimaryColor,
-      ),
-      home: MyHomePage(title: appTitle),
+      home: _HomePageState()
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  final String title;
-
-  MyHomePage({key, this.title}) : super(key: key);
-
+class _HomePageState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     BoxDecoration boxDecoration = BoxDecoration(
       color: Colors.white,
     );
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: Center(child: Text('My Page!')),
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        iconTheme: IconThemeData(color: Colors.black),
+        ),
       drawer: Drawer(
-        elevation: 20.0,
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
         child: ListView(
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
