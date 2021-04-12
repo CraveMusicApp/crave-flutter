@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "42030212945",
+    "project_id": "crave-music-app",
+    "storage_bucket": "crave-music-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42030212945:android:ab5bc3ea847a8309af5570",
+        "android_client_info": {
+          "package_name": "com.example.crave"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "42030212945-5qio66ljknnbajqn0snt7gid1hbepfpv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.crave",
+            "certificate_hash": "819092e3d378fcfd32e9d5405dad1822847ee110"
+          }
+        },
+        {
+          "client_id": "42030212945-r7nflmh4nbpveo14a2orgdqpcefvmoci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjdJRi0t4wemE167lU0A59lPAOMOjsRdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "42030212945-r7nflmh4nbpveo14a2orgdqpcefvmoci.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
