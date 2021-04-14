@@ -1,10 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Router;
+import 'Routing/routing.dart';
+import 'Routing/routing_constants.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: _HomePageState()
+      home: _HomePageState(),
+      onGenerateRoute: Router.generateRoute,
     );
   }
 }
@@ -20,7 +23,7 @@ class _HomePageState extends StatelessWidget {
         elevation: 0.0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         iconTheme: IconThemeData(color: Colors.black),
-        ),
+      ),
       drawer: Drawer(
         child: ListView(
           // Important: Remove any padding from the ListView.
@@ -66,11 +69,13 @@ class _HomePageState extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.account_box_rounded),
               title: Text('Profile'),
+              //
               onTap: () {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
-                Navigator.pop(context);
+                //
+                Navigator.pushNamed(context, profileRoute);
               },
             ),
             ListTile(
