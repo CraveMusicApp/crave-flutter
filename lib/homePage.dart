@@ -6,8 +6,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: _HomePageState(),
-      onGenerateRoute: Router.generateRoute,
+       home: _HomePageState(),
+       onGenerateRoute: Router.generateRoute,
     );
   }
 }
@@ -85,7 +85,7 @@ class _HomePageState extends StatelessWidget {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
-                Navigator.pop(context);
+                Navigator.pushNamed(context, settingsRoute);
               },
             ),
             ListTile(
