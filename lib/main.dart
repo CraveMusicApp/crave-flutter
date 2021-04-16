@@ -1,8 +1,16 @@
-import 'package:flutter/material.dart' hide Router;
-import 'Routing/routing.dart';
-import 'Routing/routing_constants.dart';
+//import 'package:flutter/material.dart' hide Router;
+//import 'Routing/routing.dart';
+//import 'Routing/routing_constants.dart';
 
-void main() {
+import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:crave/blocs/auth_bloc.dart';
+import 'package:crave/screens/login.dart';
+import 'package:provider/provider.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(LoginPage());
 }
 
@@ -10,28 +18,23 @@ class LoginPage extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Provider(
+      create: (context) => AuthBloc(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          primaryColor: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: LoginScreen(),
       ),
-      onGenerateRoute: Router.generateRoute,
-      initialRoute: loginRoute,
     );
   }
 }
 
 class MyLoginPage extends StatefulWidget {
   MyLoginPage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -70,7 +73,7 @@ class _MyLoginPageState extends State<MyLoginPage> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
-          Navigator.pushNamed(context, homeRoute);
+          //Navigator.pushNamed(context, homeRoute);
         },
         child: Text("Login",
             textAlign: TextAlign.center,
