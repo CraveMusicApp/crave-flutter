@@ -1,3 +1,4 @@
+import 'package:crave/spotifyAuthorization/authorize.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'Routing/routing.dart';
 import 'Routing/routing_constants.dart';
@@ -70,6 +71,7 @@ class _MyLoginPageState extends State<MyLoginPage> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
+          requestAuth();
           Navigator.pushNamed(context, homeRoute);
         },
         child: Text("Login",
