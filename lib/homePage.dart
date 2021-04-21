@@ -60,9 +60,6 @@ class _HomePageState extends StatelessWidget {
               leading: Icon(Icons.chat_bubble),
               title: Text('Forums'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.pop(context);
               },
             ),
@@ -71,10 +68,6 @@ class _HomePageState extends StatelessWidget {
               title: Text('Profile'),
               //
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                //
                 Navigator.pushNamed(context, profileRoute);
               },
             ),
@@ -82,9 +75,6 @@ class _HomePageState extends StatelessWidget {
               leading: Icon(Icons.brightness_low),
               title: Text('Settings'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.pushNamed(context, settingsRoute);
               },
             ),
@@ -92,9 +82,6 @@ class _HomePageState extends StatelessWidget {
               leading: Icon(Icons.arrow_right_rounded),
               title: Text('Log out'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.pop(context);
               },
             ),

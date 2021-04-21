@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart' hide Router;
-
+import 'Routing/routing_constants.dart';
+import 'Routing/routing.dart';
 class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: _ProfilePageState(),
+      onGenerateRoute: Router.generateRoute,
     );
   }
 }
@@ -52,7 +54,9 @@ class _ProfilePageState extends StatelessWidget {
                               borderRadius: BorderRadius.circular(0.0),
                               side: BorderSide(
                                   color: Color.fromRGBO(0, 160, 227, 1))),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, homeRoute);
+                          },
                           padding: EdgeInsets.all(10.0),
                           color: Color(0xff1554F6),
                           textColor: Colors.white,
