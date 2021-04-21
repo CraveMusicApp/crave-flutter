@@ -1,8 +1,7 @@
-//import 'package:flutter/material.dart' hide Router;
-//import 'Routing/routing.dart';
-//import 'Routing/routing_constants.dart';
+import 'package:flutter/material.dart' hide Router;
+import 'Routing/routing.dart';
+import 'Routing/routing_constants.dart';
 
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:crave/blocs/auth_bloc.dart';
 import 'package:crave/screens/login.dart';
