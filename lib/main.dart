@@ -70,8 +70,8 @@ class _MyLoginPageState extends State<MyLoginPage> {
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () {
-          requestAuth();
+        onPressed: () async {
+          await requestAuth();
           Navigator.pushNamed(context, homeRoute);
         },
         child: Text("Login",

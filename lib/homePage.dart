@@ -26,10 +26,9 @@ class _HomePageState extends StatelessWidget {
       ),
       drawer: Drawer(
         child: ListView(
-          // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: <Widget>[
-            // ignore: missing_required_param
+          // ignore: missing_required_param
             UserAccountsDrawerHeader(
               accountName: Text('Joey'),
               currentAccountPicture:
