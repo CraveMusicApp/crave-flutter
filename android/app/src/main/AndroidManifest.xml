@@ -44,4 +44,12 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+    <activity android:name="com.linusu.flutter_web_auth.CallbackActivity" >
+        <intent-filter android:label="flutter_web_auth">
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="crave.app" />
+        </intent-filter>
+    </activity>
 </manifest>

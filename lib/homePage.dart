@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart' hide Router;
 import 'Routing/routing.dart';
 import 'Routing/routing_constants.dart';
+import 'spotifyAuthorization/webPlayer.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -100,6 +101,9 @@ class _HomePageState extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async => loadSpotifyArtist() 
+      )
     );
   }
 }
