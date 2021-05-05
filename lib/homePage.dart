@@ -1,3 +1,4 @@
+import 'package:crave/components/audio_player.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'Routing/routing.dart';
 import 'Routing/routing_constants.dart';
@@ -6,8 +7,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-       home: _HomePageState(),
-       onGenerateRoute: Router.generateRoute,
+      home: _HomePageState(),
+      onGenerateRoute: Router.generateRoute,
     );
   }
 }
@@ -88,6 +89,9 @@ class _HomePageState extends StatelessWidget {
           ],
         ),
       ),
+      body: Center(
+        child: MyAudio()
+        ),
     );
   }
 }
