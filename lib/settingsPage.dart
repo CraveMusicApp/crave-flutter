@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart'; //the library for a divider
 import 'package:flutter/material.dart';
+import 'components/appBar.dart';
+import 'components/app_drawer.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -10,19 +12,8 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 1,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.blue,
-          ),
-        ),
-      ),
+       appBar:myAppBar("Homepage"),  
+    drawer: myDrawer(context),
       body: Container(
         padding: EdgeInsets.only(left: 16, top: 25, right: 16),
         child: ListView(
