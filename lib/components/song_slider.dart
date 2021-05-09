@@ -1,5 +1,7 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
+import 'dart:developer';
+import 'package:flutter/foundation.dart';
 
 class MySongSlider extends StatefulWidget {
   @override
@@ -10,12 +12,15 @@ class _MySongSliderState extends State<MySongSlider> {
   AudioPlayer audioPlayer = new AudioPlayer();
   Duration duration = new Duration();
   Duration position = new Duration();
+  //Create an instance
+  final player = AudioPlayer();
 
   bool playing = false;
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(5),
+      padding: EdgeInsets.all(20),
+      height: 300,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -38,42 +43,44 @@ class _MySongSliderState extends State<MySongSlider> {
 
   Widget slider() {
     return Slider.adaptive(
-        value: duration.inSeconds.toDouble(),
-        max: duration.inSeconds.toDouble(),
+        min: 0.0,
+        value: position.inSeconds.toDouble() ,
+        max: 30.0,
         onChanged: (double value) {
-          setState(() {});
+          setState((){
+            player.seek(Duration(seconds: value.toInt()));
+          });
         });
   }
 
   Future<void> getAudio() async {
-    var url = "";
-    if (playing) {
-      //pause song
-      var res = await audioPlayer.pause();
-      if (res == 1) {
-        setState(() {
+    var length = await player.setUrl('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+    
+    if (playing){
+      player.pause();
+        setState((){
           playing = false;
+          debugPrint('Player Paused.\n playing= $playing');
         });
-      }
     } else {
-      //play song
-      var res = await audioPlayer.play(url, isLocal: true);
-      if (res == 1) {
-        setState(() {
+      player.play();
+        setState((){
           playing = true;
+          debugPrint('Player Resumed.\n playing= $playing');
         });
-      }
     }
 
-    audioPlayer.onDurationChanged.listen((Duration dd) {
-      setState(() {
-        duration = dd;
-      });
-    });
-    audioPlayer.onAudioPositionChanged.listen((Duration dd) {
+    player.positionStream.listen((Duration dd) {
+      print('Duration: $dd');
       setState(() {
         position = dd;
       });
     });
+
+
+    
   }
+
+ 
+  
 }

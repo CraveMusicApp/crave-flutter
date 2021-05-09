@@ -15,6 +15,7 @@ class _MyAudioState extends State<MyAudio> {
     return Container(
       child: Column(
         children: [
+          AlbumArt(),
           MySongSlider(),
         ],
       ),
