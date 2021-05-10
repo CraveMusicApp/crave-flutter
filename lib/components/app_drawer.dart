@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:crave/Routing/routing_constants.dart';
+import 'package:crave/services/auth_service.dart';
+
+
 Widget myDrawer(BuildContext context){
+AuthService LogOut = new AuthService();
   BoxDecoration boxDecoration = BoxDecoration(
       color: Colors.white,
     );
@@ -64,6 +68,9 @@ Widget myDrawer(BuildContext context){
               title: Text('Log out'),
               onTap: () {
                 Navigator.pop(context);
+                LogOut.awaitSignOut();
+                Navigator.pushNamed(context,loginRoute);
+              
               },
             ),
           ],

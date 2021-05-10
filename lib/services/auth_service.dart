@@ -1,10 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
-  final _auth = FirebaseAuth.instance;
+ final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<UserCredential> signInWithCredential(AuthCredential credential) => 
   _auth.signInWithCredential(credential);
-  Future<void> logout() => _auth.signOut();
+  Future<String> logout() => _auth.signOut();
   Stream<User> get currentUser => _auth.authStateChanges();
+
+Future<String> awaitSignOut() async {
+  try {
+    var result = await logout();
+    return '$result You are signed Out';
+  } catch (e) {
+    return 'Failed to logout user: $e';
+  }
+}
 }

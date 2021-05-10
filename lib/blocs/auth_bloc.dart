@@ -32,4 +32,8 @@ class AuthBloc {
   logout() {
     authService.logout();
   }
+
+  
+
+
 }

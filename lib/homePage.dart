@@ -4,6 +4,8 @@ import 'Routing/routing.dart';
 import 'Routing/routing_constants.dart';
 import 'components/appBar.dart';
 import 'components/app_drawer.dart';
+import 'blocs/auth_bloc.dart';
+import 'services/auth_service.dart';
 
 
 class HomePage extends StatelessWidget {
