@@ -6,7 +6,7 @@ class AuthService {
 
   Future<UserCredential> signInWithCredential(AuthCredential credential) =>
       _auth.signInWithCredential(credential);
-  Future<void> logout() => _auth.signOut();
+  Future<String> logout() => _auth.signOut();
   Stream<User> get currentUser => _auth.authStateChanges();
 
   Future getCurrentUser() async {
@@ -26,4 +26,13 @@ class AuthService {
     debugPrint('username $displayName');
     return displayName;
   }
+  Future<String> awaitSignOut() async {
+  try {
+    var result = await logout();
+    return '$result You are signed Out';
+  } catch (e) {
+    return 'Failed to logout user: $e';
+  }
 }
+}
+

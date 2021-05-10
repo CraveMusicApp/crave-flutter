@@ -1,23 +1,32 @@
+import 'package:crave/components/appBar.dart';
+import 'package:crave/components/app_drawer.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'Routing/routing_constants.dart';
 import 'Routing/routing.dart';
+import 'package:flutter/cupertino.dart'; //the library for a divider
+import 'package:flutter/material.dart';
 import 'package:crave/services/auth_service.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   @override
+  _ProfilePageState createState() => _ProfilePageState();
+}
+/*
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: _ProfilePageState(),
-      onGenerateRoute: Router.generateRoute,
+     // home: _ProfilePageState(),
+     // onGenerateRoute: Router.generateRoute,
     );
   }
-}
+}*/
 
-class _ProfilePageState extends StatelessWidget {
+class _ProfilePageState extends State<ProfilePage> {
   AuthService userProfile = new AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: myAppBar("Profile"),
+      drawer: myDrawer(context),
       body: Column(
         children: <Widget>[
           Container(
@@ -25,10 +34,10 @@ class _ProfilePageState extends StatelessWidget {
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [Colors.white, Colors.white10])),
+                      colors: [Colors.grey[50], Colors.white10])),
               child: Container(
                 width: double.infinity,
-                height: 600.0,
+                //height: 600.0,
                 child: Center(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,9 +88,9 @@ class _ProfilePageState extends StatelessWidget {
                                 height: 10.0,
                               ),
                               Text(
-                                'He will want to use your yacht, and I do not want this thing smelling like fish.\n',
+                                'Invest in dogecoin. Or else...\n',
                                 style: TextStyle(
-                                  fontSize: 14.0,
+                                  fontSize: 19.0,
                                   color: Colors.black,
                                   letterSpacing: 1.0,
                                 ),
@@ -189,14 +198,28 @@ class _ProfilePageState extends StatelessWidget {
                           children: <Widget>[
                             Container(
                               width: 120.0,
-                              color: Colors.pink,
+                              child: new Image.asset('assets/Blond.jpg'),
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.all(9),
+                              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                             ),
                             //Container One
                             Container(
                               width: 120.0,
-                              color: Colors.green,
+                              child: new Image.asset('assets/alex.jpg'),
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.all(
+                                  9), //padding: EdgeInsets.only(left: 20, right: 10),
+                              padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                             ),
                             //Container Two
+                            Container(
+                              width: 120.0,
+                              child: new Image.asset('assets/graduation.jpg'),
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.all(9),
+                              padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                            ),
                           ],
                         ),
                         //Finish Triple Box
