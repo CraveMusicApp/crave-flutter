@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart' hide Router;
 import 'Routing/routing_constants.dart';
 import 'Routing/routing.dart';
+import 'package:crave/services/auth_service.dart';
+
 class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,6 +14,7 @@ class ProfilePage extends StatelessWidget {
 }
 
 class _ProfilePageState extends StatelessWidget {
+  AuthService userProfile = new AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +35,7 @@ class _ProfilePageState extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CircleAvatar(
-                        backgroundImage: AssetImage('lib/assets/joey.jpg'),
+                        backgroundImage: userProfile.getProfileImage(),
                         radius: 70.0,
                       ),
                       SizedBox(

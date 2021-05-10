@@ -1,3 +1,4 @@
+import 'package:crave/services/auth_service.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'Routing/routing.dart';
 import 'Routing/routing_constants.dart';
@@ -14,6 +15,7 @@ class HomePage extends StatelessWidget {
 
 class _HomePageState extends StatelessWidget {
   @override
+  AuthService userProfile = new AuthService();
   Widget build(BuildContext context) {
     BoxDecoration boxDecoration = BoxDecoration(
       color: Colors.white,
@@ -31,9 +33,9 @@ class _HomePageState extends StatelessWidget {
           children: <Widget>[
             // ignore: missing_required_param
             UserAccountsDrawerHeader(
-              accountName: Text('Joey'),
+              accountName: Text('Hello, ' + userProfile.getDisplayName(), style: TextStyle(color: Colors.black, )),
               currentAccountPicture:
-                  Image.network('https://i.imgur.com/t0MRiAf.png'),
+                  userProfile.getProfileImage(),
               decoration: boxDecoration,
             ),
             ListTile(

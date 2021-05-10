@@ -20,5 +20,10 @@ class AuthService {
       return Icon(Icons.account_circle, size: 100);
     }
   }
-}
 
+  getDisplayName() {
+    var displayName = _auth.currentUser.displayName;
+    debugPrint('username $displayName');
+    return displayName;
+  }
+}
