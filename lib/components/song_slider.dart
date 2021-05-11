@@ -1,7 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'dart:developer';
 import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
 
 class MySongSlider extends StatefulWidget {
   @override
@@ -28,6 +30,7 @@ class _MySongSliderState extends State<MySongSlider> {
           InkWell(
               onTap: () {
                 getAudio();
+              
               },
               child: Icon(
                 playing == false
@@ -44,30 +47,31 @@ class _MySongSliderState extends State<MySongSlider> {
   Widget slider() {
     return Slider.adaptive(
         min: 0.0,
-        value: position.inSeconds.toDouble() ,
+        value: position.inSeconds.toDouble(),
         max: 30.0,
         onChanged: (double value) {
-          setState((){
+          setState(() {
             player.seek(Duration(seconds: value.toInt()));
           });
         });
   }
 
   Future<void> getAudio() async {
-    var length = await player.setUrl('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
-    
-    if (playing){
+    var length = await player.setUrl(
+      'https://s3-us-west-1.amazonaws.com/crave.songs.com/CraveSongs/Queen+-+Another+One+Bites+the+Dust+(Official+Video).mp3');
+
+    if (playing) {
       player.pause();
-        setState((){
-          playing = false;
-          debugPrint('Player Paused.\n playing= $playing');
-        });
+      setState(() {
+        playing = false;
+        debugPrint('Player Paused.\n playing= $playing');
+      });
     } else {
       player.play();
-        setState((){
-          playing = true;
-          debugPrint('Player Resumed.\n playing= $playing');
-        });
+      setState(() {
+        playing = true;
+        debugPrint('Player Resumed.\n playing= $playing');
+      });
     }
 
     player.positionStream.listen((Duration dd) {
@@ -76,11 +80,7 @@ class _MySongSliderState extends State<MySongSlider> {
         position = dd;
       });
     });
-
-
-    
   }
 
- 
-  
+
 }

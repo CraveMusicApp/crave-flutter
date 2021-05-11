@@ -1,7 +1,7 @@
 import 'package:crave/components/album_art.dart';
 import 'package:crave/components/song_slider.dart';
+import 'package:crave/components/song_tools.dart';
 import 'package:flutter/material.dart';
-import 'dart:ffi';
 
 class MyAudio extends StatefulWidget {
   @override
@@ -17,6 +17,7 @@ class _MyAudioState extends State<MyAudio> {
         children: [
           AlbumArt(),
           MySongSlider(),
+          MySongTools()
         ],
       ),
     );
