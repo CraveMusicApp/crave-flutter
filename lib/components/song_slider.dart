@@ -12,12 +12,17 @@ class MySongSlider extends StatefulWidget {
 
 class _MySongSliderState extends State<MySongSlider> {
   AudioPlayer audioPlayer = new AudioPlayer();
-  Duration duration = new Duration();
+  //Duration duration = new Duration();
   Duration position = new Duration();
   //Create an instance
   final player = AudioPlayer();
+  // ignore: non_constant_identifier_names
+  var song_genre = 'pop';
+  // ignore: non_constant_identifier_names
+  var song_id = 1;
 
   bool playing = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,7 +35,6 @@ class _MySongSliderState extends State<MySongSlider> {
           InkWell(
               onTap: () {
                 getAudio();
-              
               },
               child: Icon(
                 playing == false
@@ -57,8 +61,14 @@ class _MySongSliderState extends State<MySongSlider> {
   }
 
   Future<void> getAudio() async {
-    var length = await player.setUrl(
-      'https://s3-us-west-1.amazonaws.com/crave.songs.com/CraveSongs/Queen+-+Another+One+Bites+the+Dust+(Official+Video).mp3');
+    var url = 'https://s3-us-west-1.amazonaws.com/crave.songs.com/' +
+        song_genre +
+        '/' +
+        song_genre +
+        song_id.toString() +
+        '.mp3';
+
+    var response = await player.setUrl(url);
 
     if (playing) {
       player.pause();
@@ -78,9 +88,23 @@ class _MySongSliderState extends State<MySongSlider> {
       print('Duration: $dd');
       setState(() {
         position = dd;
+        if (position.inSeconds.toDouble() >= 30.0) {
+          nextSong();
+        }
       });
     });
   }
 
+  void nextSong() async {
+    position = new Duration();
+    song_id += 1;
+    var url = 'https://s3-us-west-1.amazonaws.com/crave.songs.com/' +
+        song_genre +
+        '/' +
+        song_genre +
+        song_id.toString() +
+        '.mp3';
 
+    var response = await player.setUrl(url);
+  }
 }
