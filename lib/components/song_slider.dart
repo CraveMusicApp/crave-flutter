@@ -98,6 +98,7 @@ class _MySongSliderState extends State<MySongSlider> {
   void nextSong() async {
     position = new Duration();
     song_id += 1;
+    
     var url = 'https://s3-us-west-1.amazonaws.com/crave.songs.com/' +
         song_genre +
         '/' +
