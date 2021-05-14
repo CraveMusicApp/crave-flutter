@@ -8,6 +8,8 @@ import 'package:crave/screens/home.dart';
 import 'package:provider/provider.dart';
 
 
+
+
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key, this.title}) : super(key: key);
 
@@ -69,7 +71,11 @@ class _LoginScreenState extends State<LoginScreen> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
-          //Navigator.pushNamed(context, homeRoute);
+            Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => HomePage(),
+          ),
+        );
         },
         child: Text("Login",
             textAlign: TextAlign.center,

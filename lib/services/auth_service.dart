@@ -21,6 +21,10 @@ class AuthService {
     }
   }
 
+  getProfilePageImage() {
+    return _auth.currentUser.photoURL;
+  }
+
   getDisplayName() {
     var displayName = _auth.currentUser.displayName;
     debugPrint('username $displayName');
