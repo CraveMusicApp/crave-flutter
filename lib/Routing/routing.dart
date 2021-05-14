@@ -1,6 +1,5 @@
 import 'package:crave/Routing/routing_constants.dart';
 import 'package:crave/homePage.dart';
-import 'package:crave/main.dart';
 import 'package:crave/screens/login.dart';
 import 'package:crave/settingsPage.dart';
 import 'package:crave/profile.dart';
