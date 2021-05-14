@@ -1,10 +1,10 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
+import 'album_art.dart';
+import 'music_ids.dart';
 
+// ignore: must_be_immutable
 class MySongSlider extends StatefulWidget {
   @override
   _MySongSliderState createState() => _MySongSliderState();
@@ -18,8 +18,6 @@ class _MySongSliderState extends State<MySongSlider> {
   final player = AudioPlayer();
   // ignore: non_constant_identifier_names
   var song_genre = 'pop';
-  // ignore: non_constant_identifier_names
-  var song_id = 1;
 
   bool playing = false;
 
@@ -98,7 +96,8 @@ class _MySongSliderState extends State<MySongSlider> {
   void nextSong() async {
     position = new Duration();
     song_id += 1;
-    
+    album_id += 1;
+
     var url = 'https://s3-us-west-1.amazonaws.com/crave.songs.com/' +
         song_genre +
         '/' +

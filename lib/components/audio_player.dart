@@ -3,22 +3,23 @@ import 'package:crave/components/song_slider.dart';
 import 'package:crave/components/song_tools.dart';
 import 'package:flutter/material.dart';
 
-class MyAudio extends StatefulWidget {
-  @override
-  _MyAudioState createState() => _MyAudioState();
-}
+// ignore: must_be_immutable
+class Audio extends StatelessWidget {
+  final VoidCallback onAudioSelected;
+  // ignore: non_constant_identifier_names
+  var song_id = 1;
+  
 
-class _MyAudioState extends State<MyAudio> {
-
+  Audio(
+      // ignore: non_constant_identifier_names
+      {@required this.song_id,
+      @required this.album_id,
+      this.onAudioSelected});
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        children: [
-          AlbumArt(),
-          MySongSlider(),
-          MySongTools()
-        ],
+        children: [AlbumArt(), MySongSlider(), MySongTools()],
       ),
     );
   }

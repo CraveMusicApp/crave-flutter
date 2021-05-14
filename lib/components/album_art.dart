@@ -1,6 +1,8 @@
 import 'package:crave/components/colors.dart';
 import 'package:flutter/material.dart';
+import 'music_ids.dart';
 
+// ignore: must_be_immutable
 class AlbumArt extends StatelessWidget {
   // ignore: non_constant_identifier_names
   var album_genre = 'pop_album';
@@ -16,10 +18,8 @@ class AlbumArt extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: Image.network(
-            getAlbumUrl(),
-            fit: BoxFit.fill,
-          )),
+          child: getAlbumImage()
+          ),
       decoration: BoxDecoration(
         color: primaryColor,
         borderRadius: BorderRadius.circular(20),
@@ -39,18 +39,17 @@ class AlbumArt extends StatelessWidget {
     );
   }
 
-  String getAlbumUrl() {
+  Widget getAlbumImage() {
     var url = 'https://s3-us-west-1.amazonaws.com/crave.albums.com/' +
         album_genre +
         '/' +
         album_genre +
         album_id.toString() +
         '.jpg';
-    return url;
+
+    return Image.network(
+      url,
+      fit: BoxFit.fill,
+    );
   }
-  void incrementAlbumId() {
-  album_id += 1;
 }
-}
-
-

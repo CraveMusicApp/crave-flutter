@@ -90,7 +90,7 @@ class _HomePageState extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: MyAudio()
+        child: Audio()
         ),
     );
   }
