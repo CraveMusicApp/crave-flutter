@@ -1,11 +1,12 @@
 import 'dart:async';
+import 'package:crave/homePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:crave/blocs/auth_bloc.dart';
 import 'package:crave/screens/home.dart';
 import 'package:provider/provider.dart';
-import '/../homePage.dart';
+
 
 
 
@@ -53,7 +54,6 @@ class _LoginScreenState extends State<LoginScreen> {
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
-    
     final passwordField = TextField(
       obscureText: true,
       style: style,
@@ -114,6 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SignInButton(
                 Buttons.Google,
+
                 onPressed: () async{
                   await authBloc.loginGoogle();
                   Navigator.of(context).pushReplacement(

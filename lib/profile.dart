@@ -4,20 +4,23 @@ import 'package:flutter/material.dart' hide Router;
 import 'Routing/routing_constants.dart';
 import 'package:flutter/cupertino.dart'; //the library for a divider
 import 'package:flutter/material.dart';
+import 'package:crave/services/auth_service.dart';
+
+
 
 class ProfilePage extends StatefulWidget {
   @override
   _ProfilePageState createState() => _ProfilePageState();
+
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  AuthService userProfile = new AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
      appBar: myAppBar("Profile"),
      drawer: myDrawer(context), 
-
       body: Column(
         children: <Widget>[
           Container(
@@ -36,7 +39,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CircleAvatar(
-                        backgroundImage: AssetImage('assets/joey.jpg'),
+                        backgroundImage: NetworkImage(userProfile.getProfilePageImage()),
                         radius: 70.0,
                       ),
                       SizedBox(

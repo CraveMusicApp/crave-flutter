@@ -1,7 +1,12 @@
+import 'package:crave/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:crave/Routing/routing_constants.dart';
+
 Widget myDrawer(BuildContext context){
+  @override
+  AuthService userProfile = new AuthService();
+  
   BoxDecoration boxDecoration = BoxDecoration(
       color: Colors.white,
     );
@@ -12,9 +17,9 @@ Widget myDrawer(BuildContext context){
           children: <Widget>[
             // ignore: missing_required_param
             UserAccountsDrawerHeader(
-              accountName: Text('Joey'),
+              accountName: Text('Hello, ' + userProfile.getDisplayName(), style: TextStyle(color: Colors.black, )),
               currentAccountPicture:
-                  Image.network('https://i.imgur.com/t0MRiAf.png'),              
+                  userProfile.getProfileImage(),
               decoration: boxDecoration,
             ),
             ListTile(
