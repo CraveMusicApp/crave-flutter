@@ -14,14 +14,36 @@ class Audio extends StatefulWidget {
 
 class _AudioState extends State<Audio> {
   int album_id = 1;
-
   String song_genre = 'pop';
+  bool skipSong = false;
+  bool likeSong = false;
 
-
+  //callbacks
   void changeAlbum(int album_id) {
     this.setState(() {
       this.album_id = ++album_id;
     });
+  }
+
+  void changeSkip(bool skipSong) {
+    this.setState(() {
+      if (skipSong == true) {
+        this.skipSong = false;
+      } else {
+        this.skipSong = true;
+      }
+    });
+  }
+
+  void changeLike(bool likeSong) {
+    this.setState(() {
+      if (likeSong == true) {
+        this.likeSong = false;
+      } else {
+        this.likeSong = true;
+      }
+    });
+    debugPrint('Status of Liked: ${likeSong}');
   }
 
   @override
@@ -30,8 +52,8 @@ class _AudioState extends State<Audio> {
       child: Column(
         children: [
           AlbumArt(this.changeAlbum, this.album_id),
-          MySongSlider(this.changeAlbum, this.album_id),
-          MySongTools()
+          MySongSlider(this.changeAlbum, this.album_id,this.changeLike,this.likeSong),
+          MySongTools(this.changeLike,this.likeSong)
         ],
       ),
     );

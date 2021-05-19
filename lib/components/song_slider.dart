@@ -1,3 +1,4 @@
+import 'package:crave/components/song_tools.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:flutter/foundation.dart';
@@ -5,9 +6,10 @@ import 'package:flutter/foundation.dart';
 // ignore: must_be_immutable
 class MySongSlider extends StatefulWidget {
   final Function(int) callbackAlbum;
+  final Function(bool) callbackLike;
   int album_id;
-
-  MySongSlider(this.callbackAlbum, this.album_id);
+  bool liked = false;
+  MySongSlider(this.callbackAlbum, this.album_id, this.callbackLike,this.liked);
 
   @override
   _MySongSliderState createState() => _MySongSliderState();
@@ -106,10 +108,16 @@ class _MySongSliderState extends State<MySongSlider> {
   void nextSong() async {
     position = new Duration();
     setSongId();
-
+    if (widget.liked == true) {
+      changeLike();
+    }
     widget.callbackAlbum(widget.album_id);
     debugPrint('callback album_id: ${widget.album_id}');
 
     await player.setUrl(getUrl());
+  }
+
+  void changeLike() {
+    widget.callbackLike(widget.liked);
   }
 }
