@@ -1,5 +1,7 @@
+import 'package:crave/blocs/auth_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:crave/flask/api.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -26,13 +28,15 @@ class AuthService {
     debugPrint('username $displayName');
     return displayName;
   }
+
+  
+
   Future<String> awaitSignOut() async {
-  try {
-    var result = await logout();
-    return '$result You are signed Out';
-  } catch (e) {
-    return 'Failed to logout user: $e';
+    try {
+      var result = await logout();
+      return '$result You are signed Out';
+    } catch (e) {
+      return 'Failed to logout user: $e';
+    }
   }
 }
-}
-
