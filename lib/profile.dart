@@ -13,7 +13,6 @@ class ProfilePage extends StatefulWidget {
   _ProfilePageState createState() => _ProfilePageState();
 
 }
- 
 
 class _ProfilePageState extends State<ProfilePage> {
   AuthService userProfile = new AuthService();
@@ -33,7 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
               child: Container(
                 width: double.infinity,
-                //height: 600.0,
+                height: 600.0,
                 child: Center(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
