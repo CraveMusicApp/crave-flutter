@@ -3,23 +3,36 @@ import 'package:crave/components/song_slider.dart';
 import 'package:crave/components/song_tools.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
-class Audio extends StatelessWidget {
-  final VoidCallback onAudioSelected;
-  // ignore: non_constant_identifier_names
-  var song_id = 1;
-  
+class Audio extends StatefulWidget {
+  //final Function(String) callbackGenre;
+  //String song_genre;
+  Audio();
 
-  Audio(
-      // ignore: non_constant_identifier_names
-      {@required this.song_id,
-      @required this.album_id,
-      this.onAudioSelected});
+  @override
+  _AudioState createState() => _AudioState();
+}
+
+class _AudioState extends State<Audio> {
+  int album_id = 1;
+
+  String song_genre = 'pop';
+
+
+  void changeAlbum(int album_id) {
+    this.setState(() {
+      this.album_id = ++album_id;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        children: [AlbumArt(), MySongSlider(), MySongTools()],
+        children: [
+          AlbumArt(this.changeAlbum, this.album_id),
+          MySongSlider(this.changeAlbum, this.album_id),
+          MySongTools()
+        ],
       ),
     );
   }

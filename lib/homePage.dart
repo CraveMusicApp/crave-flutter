@@ -89,9 +89,7 @@ class _HomePageState extends StatelessWidget {
           ],
         ),
       ),
-      body: Center(
-        child: Audio()
-        ),
+      body: Center(child: Audio()),
     );
   }
 }

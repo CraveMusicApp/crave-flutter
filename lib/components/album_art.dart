@@ -1,14 +1,18 @@
 import 'package:crave/components/colors.dart';
 import 'package:flutter/material.dart';
-import 'music_ids.dart';
 
-// ignore: must_be_immutable
-class AlbumArt extends StatelessWidget {
-  // ignore: non_constant_identifier_names
-  var album_genre = 'pop_album';
-  // ignore: non_constant_identifier_names
-  var album_id = 1;
+class AlbumArt extends StatefulWidget {
+  final Function(int) callbackAlbum;
+  int album_id;
+  AlbumArt(this.callbackAlbum, this.album_id);
 
+  @override
+  _AlbumArtState createState() => _AlbumArtState();
+}
+
+class _AlbumArtState extends State<AlbumArt> {
+  // ignore: non_constant_identifier_names
+  String album_genre = 'pop_album';
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,9 +21,7 @@ class AlbumArt extends StatelessWidget {
       padding: EdgeInsets.all(10),
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: getAlbumImage()
-          ),
+          borderRadius: BorderRadius.circular(20), child: getAlbumImage()),
       decoration: BoxDecoration(
         color: primaryColor,
         borderRadius: BorderRadius.circular(20),
@@ -44,9 +46,9 @@ class AlbumArt extends StatelessWidget {
         album_genre +
         '/' +
         album_genre +
-        album_id.toString() +
+        widget.album_id.toString() +
         '.jpg';
-
+    debugPrint('ALBUM ART.DART: ${widget.album_id.toString()}');
     return Image.network(
       url,
       fit: BoxFit.fill,

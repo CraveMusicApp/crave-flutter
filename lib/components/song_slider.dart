@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:flutter/foundation.dart';
-import 'album_art.dart';
-import 'music_ids.dart';
 
 // ignore: must_be_immutable
 class MySongSlider extends StatefulWidget {
+  final Function(int) callbackAlbum;
+  int album_id;
+
+  MySongSlider(this.callbackAlbum, this.album_id);
+
   @override
   _MySongSliderState createState() => _MySongSliderState();
 }
@@ -16,10 +19,24 @@ class _MySongSliderState extends State<MySongSlider> {
   Duration position = new Duration();
   //Create an instance
   final player = AudioPlayer();
-  // ignore: non_constant_identifier_names
-  var song_genre = 'pop';
-
   bool playing = false;
+  int song_id = 1;
+
+  String getUrl() {
+    var url = 'https://s3-us-west-1.amazonaws.com/crave.songs.com/' +
+        'pop' +
+        '/' +
+        'pop' +
+        song_id.toString() +
+        '.mp3';
+    return url;
+  }
+
+  void setSongId() {
+    setState(() {
+      this.song_id++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,14 +76,7 @@ class _MySongSliderState extends State<MySongSlider> {
   }
 
   Future<void> getAudio() async {
-    var url = 'https://s3-us-west-1.amazonaws.com/crave.songs.com/' +
-        song_genre +
-        '/' +
-        song_genre +
-        song_id.toString() +
-        '.mp3';
-
-    var response = await player.setUrl(url);
+    await player.setUrl(getUrl());
 
     if (playing) {
       player.pause();
@@ -95,16 +105,11 @@ class _MySongSliderState extends State<MySongSlider> {
 
   void nextSong() async {
     position = new Duration();
-    song_id += 1;
-    album_id += 1;
+    setSongId();
 
-    var url = 'https://s3-us-west-1.amazonaws.com/crave.songs.com/' +
-        song_genre +
-        '/' +
-        song_genre +
-        song_id.toString() +
-        '.mp3';
+    widget.callbackAlbum(widget.album_id);
+    debugPrint('callback album_id: ${widget.album_id}');
 
-    var response = await player.setUrl(url);
+    await player.setUrl(getUrl());
   }
 }
