@@ -28,7 +28,7 @@ class _MySongToolsState extends State<MySongTools> {
                     ? Icons.skip_next_outlined
                     : Icons.skip_next,
                 size: 50,
-                color: Colors.white,
+                color: Colors.blue[500],
               )),
           InkWell(
               onTap: () {
@@ -39,7 +39,7 @@ class _MySongToolsState extends State<MySongTools> {
                     ? Icons.thumb_up_outlined
                     : Icons.thumb_up_rounded,
                 size: 40,
-                color: Colors.white,
+                color: Colors.blue[500],
               ))
         ],
       ),

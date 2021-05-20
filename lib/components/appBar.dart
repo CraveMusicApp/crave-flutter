@@ -5,13 +5,13 @@ Widget myAppBar(String title, BuildContext context,
     Function(String) callbackGenre, String songGenre) {
   return AppBar(
     elevation: 0.0,
-    backgroundColor: Colors.grey[50],
-    iconTheme: IconThemeData(color: Colors.black),
+    backgroundColor: Colors.blue[500],
+    iconTheme: IconThemeData(color: Colors.white),
     actions: <Widget>[
       IconButton(
         icon: const Icon(Icons.music_note_outlined),
         tooltip: 'Open Music Selection',
-        color: Colors.blue[500],
+        color: Colors.white,
         iconSize: 30,
         onPressed: () {
           showDialog(

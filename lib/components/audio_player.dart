@@ -51,8 +51,7 @@ class _AudioState extends State<Audio> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-            Colors.white70,
-            Colors.grey[700],
+            Colors.blue[500],
             Colors.grey[900],
             Colors.black,
             Colors.black,

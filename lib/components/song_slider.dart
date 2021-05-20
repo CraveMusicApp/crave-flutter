@@ -59,12 +59,11 @@ class _MySongSliderState extends State<MySongSlider> {
                 getAudio();
               },
               child: Icon(
-                playing == false
-                    ? Icons.play_circle_outline
-                    : Icons.pause_circle_outline,
-                size: 100,
-                color: Colors.white,
-              ))
+                  playing == false
+                      ? Icons.play_circle_outline
+                      : Icons.pause_circle_outline,
+                  size: 100,
+                  color: playing == false ? Colors.blue[500] : Colors.red))
         ],
       ),
     );
@@ -75,6 +74,8 @@ class _MySongSliderState extends State<MySongSlider> {
         min: 0.0,
         value: position.inSeconds.toDouble(),
         max: 30.0,
+        activeColor: Colors.blue[500],
+        inactiveColor: Colors.green,
         onChanged: (double value) {
           setState(() {
             player.seek(Duration(seconds: value.toInt()));
