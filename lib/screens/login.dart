@@ -70,11 +70,11 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () async {
           await print(apiRequest());
-          //Navigator.of(context).pushReplacement(
-            //MaterialPageRoute(
-              //builder: (context) => HomePage(),
-            //),
-          //);
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => HomePage(),
+            ),
+          );
         },
         child: Text("Login",
             textAlign: TextAlign.center,

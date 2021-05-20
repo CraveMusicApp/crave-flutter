@@ -35,7 +35,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CircleAvatar(
-                        backgroundImage: userProfile.getProfileImage(),
+                        backgroundImage: NetworkImage(userProfile.getProfileImage()),
                         radius: 70.0,
                       ),
                       SizedBox(

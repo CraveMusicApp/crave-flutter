@@ -19,16 +19,13 @@ AuthService userProfile = new AuthService();
             UserAccountsDrawerHeader(
               accountName: Text('Hello, ' + userProfile.getDisplayName(), style: TextStyle(color: Colors.black, )),
               currentAccountPicture:
-              userProfile.getProfileImage(),
+              Image.network(userProfile.getProfileImage()),
               decoration: boxDecoration,
             ),
             ListTile(
               leading: Icon(Icons.favorite),
               title: Text('Activity Feed'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.pop(context);
               },
             ),
@@ -36,9 +33,6 @@ AuthService userProfile = new AuthService();
               leading: Icon(Icons.bookmark),
               title: Text('Saved'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.pop(context);
               },
             ),
@@ -69,7 +63,6 @@ AuthService userProfile = new AuthService();
               title: Text('Log out'),
               onTap: () {
                 Navigator.pop(context);
-                userProfile.awaitSignOut();
                 Navigator.pushNamed(context,loginRoute);
               
               },
