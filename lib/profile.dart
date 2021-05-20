@@ -11,14 +11,6 @@ class ProfilePage extends StatefulWidget {
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
-/*
-  Widget build(BuildContext context) {
-    return MaterialApp(
-     // home: _ProfilePageState(),
-     // onGenerateRoute: Router.generateRoute,
-    );
-  }
-}*/
 
 class _ProfilePageState extends State<ProfilePage> {
   AuthService userProfile = new AuthService();
@@ -51,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         height: 14.0,
                       ),
                       Text(
-                        "Joey117",
+                        userProfile.getDisplayName(),
                         style: TextStyle(
                           fontSize: 22.0,
                           color: Colors.black,
@@ -196,6 +188,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: <Widget>[
+
                             Container(
                               width: 120.0,
                               child: new Image.asset('assets/Blond.jpg'),
