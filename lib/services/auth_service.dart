@@ -17,7 +17,7 @@ class AuthService {
 
   getProfileImage() {
     if (_auth.currentUser.photoURL != null) {
-      return Image.network(_auth.currentUser.photoURL);
+      return _auth.currentUser.photoURL;
     } else {
       return Icon(Icons.account_circle, size: 100);
     }
@@ -29,13 +29,5 @@ class AuthService {
     return displayName;
   }
 
-  Future<String> awaitSignOut() async {
-    try {
-      var result = await logout();
-      return '$result You are signed Out';
-    } catch (e) {
-      return 'Failed to logout user: $e';
-    }
-  }
 
 }
