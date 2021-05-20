@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class DialogPopup extends StatefulWidget {
+  final Function(String) callbackGenre;
+  String _genreGroupValue;
+  DialogPopup(this.callbackGenre, this._genreGroupValue);
   @override
   _DialogPopupState createState() => _DialogPopupState();
 }
 
 class _DialogPopupState extends State<DialogPopup> {
   var genreArr = ['pop', 'rap', 'country'];
-  String _genreGroupValue = ' ';
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -36,12 +38,12 @@ class _DialogPopupState extends State<DialogPopup> {
                           children: <Widget>[
                             Radio(
                               value: genreArr[0],
-                              groupValue: _genreGroupValue,
+                              groupValue: widget._genreGroupValue,
                               onChanged: (val) {
-                                _genreGroupValue = val;
+                                widget._genreGroupValue = val;
                                 setState(() {
-                                    
-                                  });
+                                  widget.callbackGenre(val);
+                                });
                               },
                               activeColor: Colors.white,
                             ),
@@ -55,13 +57,13 @@ class _DialogPopupState extends State<DialogPopup> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Radio(
-                                groupValue: _genreGroupValue,
+                                groupValue: widget._genreGroupValue,
                                 value: genreArr[1],
                                 activeColor: Colors.white,
                                 onChanged: (val) {
-                                  _genreGroupValue = val;
+                                  widget._genreGroupValue = val;
                                   setState(() {
-                                    
+                                    widget.callbackGenre(val);
                                   });
                                 }),
                             Text(genreArr[1],
@@ -74,13 +76,13 @@ class _DialogPopupState extends State<DialogPopup> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Radio(
-                                groupValue: _genreGroupValue,
+                                groupValue: widget._genreGroupValue,
                                 value: genreArr[2],
                                 activeColor: Colors.white,
                                 onChanged: (val) {
-                                  _genreGroupValue = val;
+                                  widget._genreGroupValue = val;
                                   setState(() {
-                                    
+                                    widget.callbackGenre(val);
                                   });
                                 }),
                             Text(genreArr[2],
@@ -95,10 +97,10 @@ class _DialogPopupState extends State<DialogPopup> {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      color: Colors.black,
+                      color: Colors.white,
                       child: Text(
                         'Okay',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.black),
                       ),
                     )
                   ],

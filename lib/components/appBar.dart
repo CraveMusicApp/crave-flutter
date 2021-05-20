@@ -1,7 +1,8 @@
 import 'package:crave/components/popup/dialog.dart';
 import 'package:flutter/material.dart' hide Router;
 
-Widget myAppBar(String title, BuildContext context) {
+Widget myAppBar(String title, BuildContext context,
+    Function(String) callbackGenre, String songGenre) {
   return AppBar(
     elevation: 0.0,
     backgroundColor: Colors.grey[50],
@@ -10,13 +11,13 @@ Widget myAppBar(String title, BuildContext context) {
       IconButton(
         icon: const Icon(Icons.music_note_outlined),
         tooltip: 'Open Music Selection',
-        color: Colors.black,
+        color: Colors.blue[500],
         iconSize: 30,
         onPressed: () {
           showDialog(
               context: context,
               builder: (BuildContext context) {
-                return DialogPopup();
+                return DialogPopup(callbackGenre, songGenre);
               });
         },
       ),

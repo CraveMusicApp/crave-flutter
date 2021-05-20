@@ -16,7 +16,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar("Profile",context),
+      appBar: myAppBar("Profile",context,null,null),
       drawer: myDrawer(context),
       body: Column(
         children: <Widget>[
