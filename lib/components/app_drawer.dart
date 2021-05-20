@@ -1,3 +1,4 @@
+import 'package:crave/genreHomePageSelect.dart';
 import 'package:crave/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +18,9 @@ AuthService userProfile = new AuthService();
           children: <Widget>[
             // ignore: missing_required_param
             UserAccountsDrawerHeader(
-              accountName: Text('Hello, ' + userProfile.getDisplayName(), style: TextStyle(color: Colors.black, )),
-              currentAccountPicture:
-              Image.network(userProfile.getProfileImage()),
+            //  accountName: Text('Hello, ' + userProfile.getDisplayName(), style: TextStyle(color: Colors.black, )),
+             // currentAccountPicture:
+            //  Image.network(userProfile.getProfileImage()),
               decoration: boxDecoration,
             ),
             ListTile(
@@ -64,7 +65,6 @@ AuthService userProfile = new AuthService();
               onTap: () {
                 Navigator.pop(context);
                 Navigator.pushNamed(context,loginRoute);
-              
               },
             ),
           ],

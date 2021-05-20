@@ -1,5 +1,6 @@
 import 'package:crave/components/audio_player.dart';
 import 'package:crave/components/appBar.dart';
+import 'package:crave/genreHomePageSelect.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'Routing/routing.dart';
 import 'components/appBar.dart';
@@ -21,7 +22,7 @@ class _HomePageState extends StatelessWidget {
     return Scaffold(
       appBar:myAppBar("Homepage"),  
       drawer: myDrawer(context),
-      body: Center(child: Audio())
+      body:Center(child: Audio()),
     );
   }
 }
