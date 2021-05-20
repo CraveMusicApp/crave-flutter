@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 class MySongTools extends StatefulWidget {
-  Function(bool) callbackLike;
+  final Function(bool) callbackLike;
+  final Function(bool) callbackSkip;
   bool liked;
-  MySongTools(this.callbackLike, this.liked);
-  
+  bool skip;
+  MySongTools(this.callbackLike, this.liked, this.callbackSkip, this.skip);
+
   @override
   _MySongToolsState createState() => _MySongToolsState();
 }
 
 class _MySongToolsState extends State<MySongTools> {
-  bool skip = false;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +24,9 @@ class _MySongToolsState extends State<MySongTools> {
                 getNext();
               },
               child: Icon(
-                skip == false ? Icons.skip_next_outlined : Icons.skip_next,
+                widget.skip == false
+                    ? Icons.skip_next_outlined
+                    : Icons.skip_next,
                 size: 50,
                 color: Colors.white,
               )),
@@ -49,15 +51,6 @@ class _MySongToolsState extends State<MySongTools> {
   }
 
   void getNext() {
-    if (skip) {
-      setState(() {
-        skip = false;
-      });
-    } else {
-      setState(() {
-        skip = true;
-      });
-    }
-    debugPrint('Status of Skip: $skip');
+    widget.callbackSkip(widget.skip);
   }
 }

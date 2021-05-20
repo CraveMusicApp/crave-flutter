@@ -57,7 +57,10 @@ class _AudioState extends State<Audio> {
           end: Alignment.bottomCenter,
           colors:[
             Colors.white70,
-            Colors.grey[800],
+            Colors.grey[700],
+            Colors.grey[900],
+            Colors.black,
+            Colors.black,
             Colors.black
           ])
       ),
@@ -65,9 +68,12 @@ class _AudioState extends State<Audio> {
         children: [
           AlbumArt(this.changeAlbum, this.album_id),
           MySongTitle(),
-          MySongSlider(this.changeAlbum, this.album_id,this.changeLike,this.likeSong),
-          MySongTools(this.changeLike,this.likeSong)
-
+          MySongSlider(
+            this.changeAlbum, this.album_id,this.changeLike,this.likeSong,
+            this.changeSkip, this.skipSong
+          ),
+          MySongTools(
+            this.changeLike,this.likeSong,this.changeSkip,this.likeSong)
         ],
       ),
     );

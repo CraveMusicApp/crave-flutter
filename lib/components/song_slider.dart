@@ -6,10 +6,12 @@ import 'package:flutter/foundation.dart';
 class MySongSlider extends StatefulWidget {
   final Function(int) callbackAlbum;
   final Function(bool) callbackLike;
+  final Function(bool) callbackSkip;
   int album_id;
   bool liked = false;
-  MySongSlider(this.callbackAlbum, this.album_id, this.callbackLike,this.liked);
-
+  bool skip = false;
+  MySongSlider(this.callbackAlbum, this.album_id, this.callbackLike, this.liked,
+      this.callbackSkip, this.skip);
 
   @override
   _MySongSliderState createState() => _MySongSliderState();
@@ -44,7 +46,6 @@ class _MySongSliderState extends State<MySongSlider> {
   @override
   Widget build(BuildContext context) {
     return Container(
-
       padding: EdgeInsets.all(20),
       height: 300,
       child: Column(
@@ -100,7 +101,7 @@ class _MySongSliderState extends State<MySongSlider> {
       print('Duration: $dd');
       setState(() {
         position = dd;
-        if (position.inSeconds.toDouble() >= 30.0) {
+        if (position.inSeconds.toDouble() >= 30.0 || widget.skip == true) {
           nextSong();
         }
       });
@@ -109,9 +110,14 @@ class _MySongSliderState extends State<MySongSlider> {
 
   void nextSong() async {
     position = new Duration();
+    debugPrint('\n\nset Song ID');
     setSongId();
     if (widget.liked == true) {
       changeLike();
+    }
+    if (widget.skip == true) {
+      changeSkip();
+      widget.skip = false;
     }
     widget.callbackAlbum(widget.album_id);
     debugPrint('callback album_id: ${widget.album_id}');
@@ -122,4 +128,7 @@ class _MySongSliderState extends State<MySongSlider> {
     widget.callbackLike(widget.liked);
   }
 
+  void changeSkip() {
+    widget.callbackSkip(widget.skip);
+  }
 }
