@@ -1,7 +1,5 @@
-import 'package:crave/blocs/auth_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:crave/flask/api.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;

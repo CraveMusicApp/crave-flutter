@@ -1,7 +1,6 @@
 import 'package:crave/components/appBar.dart';
 import 'package:crave/components/app_drawer.dart';
 import 'package:flutter/material.dart' hide Router;
-import 'Routing/routing_constants.dart';
 import 'package:flutter/cupertino.dart'; //the library for a divider
 import 'package:flutter/material.dart';
 import 'package:crave/services/auth_service.dart';
@@ -58,7 +57,6 @@ class _ProfilePageState extends State<ProfilePage> {
                               side: BorderSide(
                                   color: Color.fromRGBO(0, 160, 227, 1))),
                           onPressed: () {
-                            Navigator.pushNamed(context, homeRoute);
                           },
                           padding: EdgeInsets.all(10.0),
                           color: Color(0xff1554F6),
