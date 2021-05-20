@@ -1,8 +1,8 @@
+import 'package:crave/components/audio_player.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'Routing/routing.dart';
 import 'components/appBar.dart';
 import 'components/app_drawer.dart';
-
 
 class HomePage extends StatelessWidget {
   @override
@@ -13,12 +13,14 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
 class _HomePageState extends StatelessWidget {
-    @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar("Homepage"),
+      appBar:myAppBar("Homepage"),  
       drawer: myDrawer(context),
+      body: Center(child: Audio())
     );
   }
 }

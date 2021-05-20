@@ -8,7 +8,7 @@ class AuthService {
 
   Future<UserCredential> signInWithCredential(AuthCredential credential) =>
       _auth.signInWithCredential(credential);
-  Future<String> logout() => _auth.signOut();
+  Future<void> logout() => _auth.signOut();
   Stream<User> get currentUser => _auth.authStateChanges();
 
   Future getCurrentUser() async {
@@ -29,8 +29,6 @@ class AuthService {
     return displayName;
   }
 
-  
-
   Future<String> awaitSignOut() async {
     try {
       var result = await logout();
@@ -39,4 +37,5 @@ class AuthService {
       return 'Failed to logout user: $e';
     }
   }
+
 }

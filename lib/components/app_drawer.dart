@@ -1,3 +1,4 @@
+import 'package:crave/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:crave/Routing/routing_constants.dart';
@@ -18,7 +19,7 @@ AuthService userProfile = new AuthService();
             UserAccountsDrawerHeader(
               accountName: Text('Hello, ' + userProfile.getDisplayName(), style: TextStyle(color: Colors.black, )),
               currentAccountPicture:
-                  userProfile.getProfileImage(),              
+              userProfile.getProfileImage(),
               decoration: boxDecoration,
             ),
             ListTile(
@@ -75,5 +76,7 @@ AuthService userProfile = new AuthService();
             ),
           ],
         ),
+        
     );
+    
 }

@@ -2,7 +2,6 @@ import 'package:crave/components/appBar.dart';
 import 'package:crave/components/app_drawer.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'Routing/routing_constants.dart';
-import 'Routing/routing.dart';
 import 'package:flutter/cupertino.dart'; //the library for a divider
 import 'package:flutter/material.dart';
 import 'package:crave/services/auth_service.dart';
@@ -29,7 +28,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       colors: [Colors.grey[50], Colors.white10])),
               child: Container(
                 width: double.infinity,
-                //height: 600.0,
+                height: 600.0,
                 child: Center(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -188,7 +187,6 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: <Widget>[
-
                             Container(
                               width: 120.0,
                               child: new Image.asset('assets/Blond.jpg'),
