@@ -5,9 +5,11 @@ import 'package:flutter/foundation.dart';
 // ignore: must_be_immutable
 class MySongSlider extends StatefulWidget {
   final Function(int) callbackAlbum;
+  final Function(bool) callbackLike;
   int album_id;
+  bool liked = false;
+  MySongSlider(this.callbackAlbum, this.album_id, this.callbackLike,this.liked);
 
-  MySongSlider(this.callbackAlbum, this.album_id);
 
   @override
   _MySongSliderState createState() => _MySongSliderState();
@@ -29,6 +31,7 @@ class _MySongSliderState extends State<MySongSlider> {
         'pop' +
         song_id.toString() +
         '.mp3';
+    debugPrint('\n\nurl $url');
     return url;
   }
 
@@ -41,8 +44,9 @@ class _MySongSliderState extends State<MySongSlider> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
-      height: 250,
+
+      padding: EdgeInsets.all(20),
+      height: 300,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -106,10 +110,16 @@ class _MySongSliderState extends State<MySongSlider> {
   void nextSong() async {
     position = new Duration();
     setSongId();
-
+    if (widget.liked == true) {
+      changeLike();
+    }
     widget.callbackAlbum(widget.album_id);
     debugPrint('callback album_id: ${widget.album_id}');
-
     await player.setUrl(getUrl());
   }
+
+  void changeLike() {
+    widget.callbackLike(widget.liked);
+  }
+
 }

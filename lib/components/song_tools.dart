@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 class MySongTools extends StatefulWidget {
+  Function(bool) callbackLike;
+  bool liked;
+  MySongTools(this.callbackLike, this.liked);
+  
   @override
   _MySongToolsState createState() => _MySongToolsState();
 }
 
 class _MySongToolsState extends State<MySongTools> {
-  bool liked = false;
   bool skip = false;
 
   @override
@@ -21,9 +24,7 @@ class _MySongToolsState extends State<MySongTools> {
                 getNext();
               },
               child: Icon(
-                skip == false 
-                  ? Icons.skip_next_outlined 
-                  : Icons.skip_next,
+                skip == false ? Icons.skip_next_outlined : Icons.skip_next,
                 size: 50,
                 color: Colors.white,
               )),
@@ -32,7 +33,7 @@ class _MySongToolsState extends State<MySongTools> {
                 getLike();
               },
               child: Icon(
-                liked == false
+                widget.liked == false
                     ? Icons.thumb_up_outlined
                     : Icons.thumb_up_rounded,
                 size: 40,
@@ -44,16 +45,7 @@ class _MySongToolsState extends State<MySongTools> {
   }
 
   void getLike() {
-    if (liked) {
-      setState(() {
-        liked = false;
-      });
-    } else {
-      setState(() {
-        liked = true;
-      });
-    }
-    debugPrint('Status of Liked: $liked');
+    widget.callbackLike(widget.liked);
   }
 
   void getNext() {
