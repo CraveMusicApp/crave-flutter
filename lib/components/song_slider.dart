@@ -46,7 +46,7 @@ class _MySongSliderState extends State<MySongSlider> {
     return Container(
 
       padding: EdgeInsets.all(20),
-      height: 300,
+      height: 200,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
