@@ -41,8 +41,8 @@ class _MySongSliderState extends State<MySongSlider> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
-      height: 300,
+      padding: EdgeInsets.all(10),
+      height: 250,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -56,7 +56,7 @@ class _MySongSliderState extends State<MySongSlider> {
                     ? Icons.play_circle_outline
                     : Icons.pause_circle_outline,
                 size: 100,
-                color: Colors.blue,
+                color: Colors.white,
               ))
         ],
       ),
