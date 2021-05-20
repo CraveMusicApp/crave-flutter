@@ -9,7 +9,7 @@ Widget myAppBar(String title, BuildContext context) {
     actions: <Widget>[
       IconButton(
         icon: const Icon(Icons.music_note_outlined),
-        tooltip: 'Open shopping cart',
+        tooltip: 'Open Music Selection',
         color: Colors.black,
         iconSize: 30,
         onPressed: () {
