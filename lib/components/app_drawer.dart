@@ -1,7 +1,10 @@
+import 'package:crave/homePage.dart';
+import 'package:crave/main.dart';
+import 'package:crave/profile.dart';
 import 'package:crave/services/auth_service.dart';
+import 'package:crave/settingsPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:crave/Routing/routing_constants.dart';
 import 'package:crave/services/auth_service.dart';
 
 Widget myDrawer(BuildContext context) {
@@ -31,21 +34,21 @@ Widget myDrawer(BuildContext context) {
           ),
           title: Text('Activity Feed'),
           onTap: () {
-            Navigator.pop(context);
+            Navigator.push(context,new MaterialPageRoute(builder: (context) => new HomePage()));
           },
         ),
         ListTile(
           leading: Icon(Icons.bookmark, color: Colors.blue[500]),
           title: Text('Saved'),
           onTap: () {
-            Navigator.pop(context);
+            Navigator.push(context,new MaterialPageRoute(builder: (context) => new HomePage()));
           },
         ),
         ListTile(
           leading: Icon(Icons.chat_bubble, color: Colors.blue[500]),
           title: Text('Forums'),
           onTap: () {
-            Navigator.pop(context);
+            Navigator.push(context,new MaterialPageRoute(builder: (context) => new HomePage()));
           },
         ),
         ListTile(
@@ -53,22 +56,21 @@ Widget myDrawer(BuildContext context) {
           title: Text('Profile'),
           //
           onTap: () {
-            Navigator.pushNamed(context, profileRoute);
+            Navigator.push(context,new MaterialPageRoute(builder: (context) => new ProfilePage()));
           },
         ),
         ListTile(
           leading: Icon(Icons.brightness_low, color: Colors.blue[500]),
           title: Text('Settings'),
           onTap: () {
-            Navigator.pushNamed(context, settingsRoute);
+            Navigator.push(context,new MaterialPageRoute(builder: (context) => new SettingsPage()));
           },
         ),
         ListTile(
           leading: Icon(Icons.arrow_right_rounded, color: Colors.blue[500]),
           title: Text('Log out'),
           onTap: () {
-            Navigator.pop(context);
-            Navigator.pushNamed(context, loginRoute);
+            Navigator.push(context,new MaterialPageRoute(builder: (context) => new LoginPage()));
           },
         ),
       ],
