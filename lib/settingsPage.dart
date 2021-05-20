@@ -12,7 +12,7 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar:myAppBar("Homepage"),  
+       appBar:myAppBar("Homepage",context),  
     drawer: myDrawer(context),
       body: Container(
         padding: EdgeInsets.only(left: 16, top: 25, right: 16),

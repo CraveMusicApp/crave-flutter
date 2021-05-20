@@ -16,10 +16,11 @@ class HomePage extends StatelessWidget {
 }
 
 class _HomePageState extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:myAppBar("Homepage"),  
+      appBar:myAppBar("Homepage",context),  
       drawer: myDrawer(context),
       body: Center(child: Audio())
     );
