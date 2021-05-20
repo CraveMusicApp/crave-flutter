@@ -20,6 +20,7 @@ class LoginPage extends StatelessWidget {
     return Provider(
       create: (context) => AuthBloc(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           brightness: Brightness.dark,

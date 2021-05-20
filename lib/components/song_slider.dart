@@ -1,4 +1,3 @@
-import 'package:crave/components/song_tools.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:flutter/foundation.dart';
@@ -31,6 +30,7 @@ class _MySongSliderState extends State<MySongSlider> {
         'pop' +
         song_id.toString() +
         '.mp3';
+    debugPrint('\n\nurl $url');
     return url;
   }
 
