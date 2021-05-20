@@ -1,5 +1,6 @@
 import 'package:crave/components/album_art.dart';
 import 'package:crave/components/song_slider.dart';
+import 'package:crave/components/song_title.dart';
 import 'package:crave/components/song_tools.dart';
 import 'package:flutter/material.dart';
 
@@ -25,6 +26,7 @@ class _AudioState extends State<Audio> {
     });
   }
 
+
   void changeSkip(bool skipSong) {
     this.setState(() {
       if (skipSong == true) {
@@ -45,15 +47,27 @@ class _AudioState extends State<Audio> {
     });
     debugPrint('Status of Liked: ${likeSong}');
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors:[
+            Colors.white70,
+            Colors.grey[800],
+            Colors.black
+          ])
+      ),
       child: Column(
         children: [
           AlbumArt(this.changeAlbum, this.album_id),
+          MySongTitle(),
           MySongSlider(this.changeAlbum, this.album_id,this.changeLike,this.likeSong),
           MySongTools(this.changeLike,this.likeSong)
+
         ],
       ),
     );

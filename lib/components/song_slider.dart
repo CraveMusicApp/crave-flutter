@@ -10,6 +10,7 @@ class MySongSlider extends StatefulWidget {
   bool liked = false;
   MySongSlider(this.callbackAlbum, this.album_id, this.callbackLike,this.liked);
 
+
   @override
   _MySongSliderState createState() => _MySongSliderState();
 }
@@ -43,6 +44,7 @@ class _MySongSliderState extends State<MySongSlider> {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       padding: EdgeInsets.all(20),
       height: 300,
       child: Column(
@@ -58,7 +60,7 @@ class _MySongSliderState extends State<MySongSlider> {
                     ? Icons.play_circle_outline
                     : Icons.pause_circle_outline,
                 size: 100,
-                color: Colors.blue,
+                color: Colors.white,
               ))
         ],
       ),
@@ -113,11 +115,11 @@ class _MySongSliderState extends State<MySongSlider> {
     }
     widget.callbackAlbum(widget.album_id);
     debugPrint('callback album_id: ${widget.album_id}');
-
     await player.setUrl(getUrl());
   }
 
   void changeLike() {
     widget.callbackLike(widget.liked);
   }
+
 }

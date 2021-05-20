@@ -4,6 +4,7 @@ import 'package:flutter/material.dart' hide Router;
 import 'Routing/routing_constants.dart';
 import 'package:flutter/cupertino.dart'; //the library for a divider
 import 'package:flutter/material.dart';
+import 'package:crave/services/auth_service.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -11,13 +12,12 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  AuthService userProfile = new AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-     appBar: myAppBar("Profile"),
-     drawer: myDrawer(context), 
-
+      appBar: myAppBar("Profile"),
+      drawer: myDrawer(context),
       body: Column(
         children: <Widget>[
           Container(
@@ -25,8 +25,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [Colors.grey[50], Colors.white10])
-                      ),
+                      colors: [Colors.grey[50], Colors.white10])),
               child: Container(
                 width: double.infinity,
                 height: 600.0,
@@ -36,14 +35,14 @@ class _ProfilePageState extends State<ProfilePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CircleAvatar(
-                        backgroundImage: AssetImage('assets/joey.jpg'),
+                        backgroundImage: userProfile.getProfileImage(),
                         radius: 70.0,
                       ),
                       SizedBox(
                         height: 14.0,
                       ),
                       Text(
-                        "Joey117",
+                        userProfile.getDisplayName(),
                         style: TextStyle(
                           fontSize: 22.0,
                           color: Colors.black,
@@ -188,30 +187,27 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: <Widget>[
-
                             Container(
                               width: 120.0,
                               child: new Image.asset('assets/Blond.jpg'),
-                              alignment: Alignment.center,                              
-                             margin: EdgeInsets.all(9),
-                             padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-
-                               ),
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.all(9),
+                              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                            ),
                             //Container One
                             Container(
                               width: 120.0,
                               child: new Image.asset('assets/alex.jpg'),
-                              alignment: Alignment.center,                              
-                              margin: EdgeInsets.all(9),//padding: EdgeInsets.only(left: 20, right: 10),
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.all(
+                                  9), //padding: EdgeInsets.only(left: 20, right: 10),
                               padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                              
-
                             ),
                             //Container Two
                             Container(
                               width: 120.0,
                               child: new Image.asset('assets/graduation.jpg'),
-                              alignment: Alignment.center,                        
+                              alignment: Alignment.center,
                               margin: EdgeInsets.all(9),
                               padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                             ),

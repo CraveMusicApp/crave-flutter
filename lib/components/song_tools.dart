@@ -4,6 +4,7 @@ class MySongTools extends StatefulWidget {
   Function(bool) callbackLike;
   bool liked;
   MySongTools(this.callbackLike, this.liked);
+  
   @override
   _MySongToolsState createState() => _MySongToolsState();
 }
@@ -25,7 +26,7 @@ class _MySongToolsState extends State<MySongTools> {
               child: Icon(
                 skip == false ? Icons.skip_next_outlined : Icons.skip_next,
                 size: 50,
-                color: Colors.lightGreen,
+                color: Colors.white,
               )),
           InkWell(
               onTap: () {
@@ -36,7 +37,7 @@ class _MySongToolsState extends State<MySongTools> {
                     ? Icons.thumb_up_outlined
                     : Icons.thumb_up_rounded,
                 size: 40,
-                color: Colors.lightGreen,
+                color: Colors.white,
               ))
         ],
       ),
@@ -45,7 +46,6 @@ class _MySongToolsState extends State<MySongTools> {
 
   void getLike() {
     widget.callbackLike(widget.liked);
-    
   }
 
   void getNext() {
