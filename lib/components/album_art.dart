@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 class AlbumArt extends StatefulWidget {
   final Function(int) callbackAlbum;
   int album_id;
-  AlbumArt(this.callbackAlbum, this.album_id);
+  String album_genre;
+  AlbumArt(this.callbackAlbum, this.album_id, this.album_genre);
 
   @override
   _AlbumArtState createState() => _AlbumArtState();
@@ -43,15 +44,17 @@ class _AlbumArtState extends State<AlbumArt> {
 
   Widget getAlbumImage() {
     var url = 'https://s3-us-west-1.amazonaws.com/crave.albums.com/' +
-        album_genre +
-        '/' +
-        album_genre +
+        widget.album_genre+
+        '_album/' +
+        widget.album_genre + '_album'+
         widget.album_id.toString() +
         '.jpg';
-    debugPrint('ALBUM ART.DART: ${widget.album_id.toString()}');
-    return Image.network(
-      url,
-      fit: BoxFit.fill,
-    );
+    debugPrint('ALBUM ART.DART: $url ${widget.album_genre} $album_genre');
+    if (widget.album_genre != null) {
+      return Image.network(
+        url,
+        fit: BoxFit.fill,
+      );
+    }
   }
 }

@@ -10,8 +10,9 @@ class MySongSlider extends StatefulWidget {
   int album_id;
   bool liked = false;
   bool skip = false;
+  String songGenre;
   MySongSlider(this.callbackAlbum, this.album_id, this.callbackLike, this.liked,
-      this.callbackSkip, this.skip);
+      this.callbackSkip, this.skip, this.songGenre);
 
   @override
   _MySongSliderState createState() => _MySongSliderState();
@@ -27,13 +28,14 @@ class _MySongSliderState extends State<MySongSlider> {
   int song_id = 1;
 
   String getUrl() {
+    debugPrint('\nSongGenre on slider: ${widget.songGenre}');
     var url = 'https://s3-us-west-1.amazonaws.com/crave.songs.com/' +
-        'pop' +
+        widget.songGenre +
         '/' +
-        'pop' +
+        widget.songGenre +
         song_id.toString() +
         '.mp3';
-    debugPrint('\n\nurl $url');
+
     return url;
   }
 
@@ -57,12 +59,11 @@ class _MySongSliderState extends State<MySongSlider> {
                 getAudio();
               },
               child: Icon(
-                playing == false
-                    ? Icons.play_circle_outline
-                    : Icons.pause_circle_outline,
-                size: 100,
-                color: Colors.white,
-              ))
+                  playing == false
+                      ? Icons.play_circle_outline
+                      : Icons.pause_circle_outline,
+                  size: 100,
+                  color: playing == false ? Colors.blue[500] : Colors.red))
         ],
       ),
     );
@@ -73,6 +74,8 @@ class _MySongSliderState extends State<MySongSlider> {
         min: 0.0,
         value: position.inSeconds.toDouble(),
         max: 30.0,
+        activeColor: Colors.blue[500],
+        inactiveColor: Colors.green,
         onChanged: (double value) {
           setState(() {
             player.seek(Duration(seconds: value.toInt()));

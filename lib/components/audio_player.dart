@@ -5,17 +5,14 @@ import 'package:crave/components/song_tools.dart';
 import 'package:flutter/material.dart';
 
 class Audio extends StatefulWidget {
-  //final Function(String) callbackGenre;
-  //String song_genre;
-  Audio();
-
+  String song_genre;
+  Audio(this.song_genre);
   @override
   _AudioState createState() => _AudioState();
 }
 
 class _AudioState extends State<Audio> {
   int album_id = 1;
-  String song_genre = 'pop';
   bool skipSong = false;
   bool likeSong = false;
 
@@ -25,7 +22,6 @@ class _AudioState extends State<Audio> {
       this.album_id = ++album_id;
     });
   }
-
 
   void changeSkip(bool skipSong) {
     this.setState(() {
@@ -45,35 +41,30 @@ class _AudioState extends State<Audio> {
         this.likeSong = true;
       }
     });
-    debugPrint('Status of Liked: ${likeSong}');
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors:[
-            Colors.white70,
-            Colors.grey[700],
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+            Colors.blue[500],
             Colors.grey[900],
             Colors.black,
             Colors.black,
             Colors.black
-          ])
-      ),
+          ])),
       child: Column(
         children: [
-          AlbumArt(this.changeAlbum, this.album_id),
+          AlbumArt(this.changeAlbum, this.album_id,widget.song_genre),
           MySongTitle(),
-          MySongSlider(
-            this.changeAlbum, this.album_id,this.changeLike,this.likeSong,
-            this.changeSkip, this.skipSong
-          ),
+          MySongSlider(this.changeAlbum, this.album_id, this.changeLike,
+              this.likeSong, this.changeSkip, this.skipSong, widget.song_genre),
           MySongTools(
-            this.changeLike,this.likeSong,this.changeSkip,this.likeSong)
+              this.changeLike, this.likeSong, this.changeSkip, this.likeSong)
         ],
       ),
     );

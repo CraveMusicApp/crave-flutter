@@ -5,23 +5,31 @@ import 'Routing/routing.dart';
 import 'components/appBar.dart';
 import 'components/app_drawer.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String songGenre;
+
+  //callbacks
+  void changeSongGenre(String songGenre) {
+    setState(() {
+      this.songGenre = songGenre;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: _HomePageState(),
-      onGenerateRoute: Router.generateRoute,
-    );
+        onGenerateRoute: Router.generateRoute,
+        home: Scaffold(
+            appBar: myAppBar(
+                "Homepage", context, this.changeSongGenre, this.songGenre),
+            drawer: myDrawer(context),
+            body: Center(child: Audio(this.songGenre)))
+       );
   }
-}
-
-class _HomePageState extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar:myAppBar("Homepage"),  
-      drawer: myDrawer(context),
-      body: Center(child: Audio())
-    );
-  }
+   
 }
