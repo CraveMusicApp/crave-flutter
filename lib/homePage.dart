@@ -23,12 +23,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
         onGenerateRoute: Router.generateRoute,
         home: Scaffold(
             appBar: myAppBar(
                 "Homepage", context, this.changeSongGenre, this.songGenre),
             drawer: myDrawer(context),
-            body: Center(child: Audio(this.songGenre))));
+            body: Center(child: Audio(this.songGenre)))
+       );
   }
+   
 }

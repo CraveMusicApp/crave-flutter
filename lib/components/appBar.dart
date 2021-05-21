@@ -3,6 +3,15 @@ import 'package:flutter/material.dart' hide Router;
 
 Widget myAppBar(String title, BuildContext context,
     Function(String) callbackGenre, String songGenre) {
+  void pressButton() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return DialogPopup(callbackGenre, songGenre);
+        });
+  }
+  
+
   return AppBar(
     elevation: 0.0,
     backgroundColor: Colors.blue[500],
@@ -14,11 +23,7 @@ Widget myAppBar(String title, BuildContext context,
         color: Colors.white,
         iconSize: 30,
         onPressed: () {
-          showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return DialogPopup(callbackGenre, songGenre);
-              });
+          pressButton();
         },
       ),
     ],

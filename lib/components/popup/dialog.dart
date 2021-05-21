@@ -10,6 +10,8 @@ class DialogPopup extends StatefulWidget {
 
 class _DialogPopupState extends State<DialogPopup> {
   var genreArr = ['pop', 'rap', 'country'];
+  
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
