@@ -1,3 +1,4 @@
+import 'package:crave/components/activeTiles.dart/activity.dart';
 import 'package:crave/homePage.dart';
 import 'package:crave/main.dart';
 import 'package:crave/profile.dart';
@@ -34,7 +35,7 @@ Widget myDrawer(BuildContext context) {
           ),
           title: Text('Activity Feed'),
           onTap: () {
-            Navigator.push(context,new MaterialPageRoute(builder: (context) => new HomePage()));
+            Navigator.push(context,new MaterialPageRoute(builder: (context) => new ActiveFeed()));
           },
         ),
         ListTile(

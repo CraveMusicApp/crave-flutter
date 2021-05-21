@@ -42,7 +42,7 @@ class _AudioState extends State<Audio> {
         this.likeSong = true;
       }
     });
-    songInfoRequest(this.likeSong, album_id.toString(), song_genre);
+    songInfoRequest(this.likeSong.toString(), this.album_id.toString(), widget.song_genre);
     debugPrint('Status of Liked: ${likeSong}');
   }
 

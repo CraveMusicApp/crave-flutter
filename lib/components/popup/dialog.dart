@@ -9,7 +9,7 @@ class DialogPopup extends StatefulWidget {
 }
 
 class _DialogPopupState extends State<DialogPopup> {
-  var genreArr = ['pop', 'rap', 'country'];
+  var genreArr = ['pop', 'rock', 'country'];
   
 
   @override
