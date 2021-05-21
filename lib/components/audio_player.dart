@@ -2,6 +2,7 @@ import 'package:crave/components/album_art.dart';
 import 'package:crave/components/song_slider.dart';
 import 'package:crave/components/song_title.dart';
 import 'package:crave/components/song_tools.dart';
+import 'package:crave/flask/api.dart';
 import 'package:flutter/material.dart';
 
 class Audio extends StatefulWidget {
@@ -33,7 +34,7 @@ class _AudioState extends State<Audio> {
     });
   }
 
-  void changeLike(bool likeSong) {
+  void changeLike(bool likeSong) async {
     this.setState(() {
       if (likeSong == true) {
         this.likeSong = false;
@@ -41,6 +42,8 @@ class _AudioState extends State<Audio> {
         this.likeSong = true;
       }
     });
+    songInfoRequest(this.likeSong, album_id.toString(), song_genre);
+    debugPrint('Status of Liked: ${likeSong}');
   }
 
   @override
